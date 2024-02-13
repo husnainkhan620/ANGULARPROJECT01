@@ -2,13 +2,20 @@
 
 
 export class Product {
-    productId!: number;
-    productName!:string;
+    productName!: string;
+    productQuantity!:number;
     subProduct!:SubProduct[];
 }
 
-class SubProduct {
-    subProductId!:number;
+export class SubProduct {
+    subProductQuantity!:number;
     subproductName!:string;
+}
+
+export class NewProductHolder {
+    selectedproduct !: string;
+    selectedsubProduct !: string;
+    toAddProductName !: string;
+    toAddProductQuantity !: number;
 }
 

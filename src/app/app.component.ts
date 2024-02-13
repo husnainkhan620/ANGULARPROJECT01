@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { ProductService } from './product-service';
-import { Product } from './product';
+import { Product, SubProduct } from './product';
+import { NewProductHolder } from './new-product-holder';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,23 @@ import { Product } from './product';
 export class AppComponent implements OnInit{
 
   products!:Product[];
+  
+  httpProducts!:Product[];
+  errorMessage !: string;
+  dropdownSelectedProduct !: Product;
+  selectedProductIndex !: number;
+  selectedPopUpProductName !: string;
+
+  toAddProductCategoryName !: string;
+  toAddSubProductName !: string;
+  addedSubProduct !: Product;
+
+  toAddProductName !: string;
+  toAddProductQuantity !: number;
+
+  selectedproduct !: string;
+  selectedsubProduct !: string;
+
   constructor(private productService : ProductService){}
   
   title = 'AngularProjectv01';
@@ -24,11 +42,116 @@ export class AppComponent implements OnInit{
       });
     });
     this.getProducts()
+    this.getProductsFromHttp()
+    this.selectedProductIndex = 0;
+    this.selectedPopUpProductName = 'Embedded Electronics'
   }
 
   getProducts(){
     this.products = this.productService.getProducts()
     console.log(this.products)
+  }
+
+  getProductsFromHttp(){
+    this.productService.getProductsFromHttp().subscribe({
+      next:product => this.httpProducts = product,
+      error : error => this.errorMessage = <any>error
+    })
+    console.log(this.httpProducts)
+  }
+
+  addNewProduct(selectedproduct : string,selectedsubProduct : string ,toAddProductName : string,toAddProductQuantity : number){
+    let newProductHolder = new NewProductHolder()
+    newProductHolder.selectedproduct = selectedproduct
+    newProductHolder.selectedsubProduct = selectedsubProduct
+    newProductHolder.toAddProductName = toAddProductName
+    newProductHolder.toAddProductQuantity = toAddProductQuantity
+    this.productService.addNewProduct(newProductHolder).subscribe(({next:newProductHolder => 
+      {
+        console.log(newProductHolder)
+      }
+    }))
+  } 
+
+
+  addProductCategory(productName :string,productQuantityParam : string){
+    console.log("Product to add :" + productName,productQuantityParam)
+    let productQuantity = parseInt(productQuantityParam)
+    let subProduct : SubProduct[] = []; // create empty arraysubProduct 
+    this.productService.addProductCategory({productName,productQuantity,subProduct}).subscribe(({next:product => this.httpProducts.push(product)}))
+  }
+
+  addSubproductCategory(productName:string,productQuantityParam : string,subproductName :string ,subProductQuantityParam : string ){
+    console.log("Sub Product to add :" + productName,productQuantityParam,subproductName,subProductQuantityParam)
+    let productQuantity = parseInt(productQuantityParam)
+    let subProductQuantity = parseInt(subProductQuantityParam)
+    let subProduct : SubProduct[] = []; // create empty arraysubProduct
+    subProduct.push({subproductName,subProductQuantity})
+    this.productService.addSubProductCategory({productName,productQuantity,subProduct}).subscribe(({next:product => 
+        {
+          
+          if( true){
+            console.log("Subscribed product"+product.productName) 
+            let justAddedSubproductName = product.subProduct[0].subproductName
+            for(var i=0;i<this.httpProducts.length;i++){
+                if(this.httpProducts[i].productName == product.productName)
+                {
+                  console.log("Under product category " + product.productName+ "index is "+i)
+                  let addedsubProduct = new SubProduct()
+                  addedsubProduct.subproductName = justAddedSubproductName
+                  addedsubProduct.subProductQuantity = 0
+                  this.httpProducts[i].subProduct.push(addedsubProduct)
+                }
+            }
+          }
+         
+        }
+      }))
+  }
+ 
+  productSelected(productSelected : string){
+      console.log("Product Selected "+productSelected)
+      this.selectedproduct = productSelected
+      for(var i=0;i< this.httpProducts.length ;i++ ){
+        if(this.httpProducts[i].productName == productSelected){
+          this.selectedProductIndex = i
+          console.log("Drop down selected index "+this.selectedProductIndex)
+          break;
+        }
+      }   
+  }
+
+  productFromPopUp( ){
+    console.log("Pop up Productselected "+this.selectedPopUpProductName)
+  }
+  
+  subProductSelected(subProductSelected : string){
+      this.selectedsubProduct = subProductSelected
+      console.log("sub product selected "+subProductSelected)
+  }
+
+  addProductCategorySubmitPopup(){
+    console.log("New Product Category to add is "+this.toAddProductCategoryName)
+    this.addProductCategory(this.toAddProductCategoryName,'0');
+   
+    this.toAddProductCategoryName = ''
+  }
+  addSubProductSubmitPopup(){
+    console.log("New Sub Product Category to add is "+this.toAddSubProductName + " under PRoduct Category "+this.selectedPopUpProductName)
+    this.addSubproductCategory(this.selectedPopUpProductName,'0',this.toAddSubProductName,'0')
+    
+    this.toAddSubProductName = ''
+  }
+
+  addProductSubmitPopup(){
+    console.log("New Product Category Selected "+ this.selectedproduct)
+    console.log("New Product SubCategory selected  "+ this.selectedsubProduct)
+
+    console.log("New Product name to add "+ this.toAddProductName)
+    console.log("New Product quantity to add "+ this.toAddProductQuantity)
+    
+    this.addNewProduct(this.selectedproduct,this.selectedsubProduct,this.toAddProductName,this.toAddProductQuantity)
+   
   }
 
   products1  = [
