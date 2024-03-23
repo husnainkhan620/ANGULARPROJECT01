@@ -1,0 +1,71 @@
+<style> 
+    .boxbordered-sm {
+      width: 250px;
+      height: 450px;
+      border: 2px solid  #e5e5e5;
+    }
+
+    .boxbordered-bg {
+      width: 400px;
+      height: 450px;
+      border: 2px solid  #e5e5e5;
+    }
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="container-fluid text-left">  
+  <div class="row content">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-4">
+        <div class="boxbordered-bg">
+
+        </div>
+    </div>
+    <div class="col-sm-4">
+      <div><h2>{{title}}</h2>
+        <h3>This will be a brief description of the product,i.e {{title}}</h3>
+        <a>Generic</a>
+        <p>SKU code : 083-CH340G</p>
+        <p>Manufacturer part number : CH340G-Module</p>
+        <div style=" height: 2px;margin: 9px 0;overflow: hidden;background-color: #e5e5e5;"></div>
+      </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="boxbordered-sm">
+            <div style="padding: 30px;">
+                <p style="text-align: center;color: red;font-size: medium;">$ 1.08</p>
+                <h4>Bulk Pricing</h4>
+                <p>Quantity 1-4 $1.08/ea</p>
+                <p>Quantity 5-9 $1.08/ea</p>
+                <p>Quantity 10+ $1.08/ea</p>
+                <p>Shipped in 24 hours from Bangalore Warehouse</p>
+                <input type="text" [(ngModel)]="quantity" placeholder="0"><br><br>
+                <button class="btn btn-success" (click)="buythisProduct()">Buy Now</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+  </div> 
+  <div class="row">
+     <div style=" height: 2px;margin: 9px 0;overflow: hidden;background-color: #e5e5e5;"></div>
+  </div>
+  <div class="row">
+    <p *ngIf="productinDetail != null">Product Category Name : {{productinDetail.productCategoryName}}</p>
+    <p *ngIf="productinDetail != null">Product Sub Category Name : {{productinDetail.productSubCategoryName}}</p>
+    <p *ngIf="productinDetail != null">Product Name : {{productinDetail.productName}} </p>
+    <p *ngIf="productinDetail != null">Product Quantity :{{productinDetail.productQuantity}} </p>
+    <p *ngIf="productinDetail != null">Product skucode : {{productinDetail.skucode}} </p>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+
+
+
+
+   
+
+</div>
+
+ 

@@ -1,0 +1,55 @@
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="container-fluid ">  
+  <div class="row content">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-8">
+      <div><h2>{{title}}</h2></div>
+      <div style="background-color: #87dd8b;margin-top: 20px ;padding: 20px;font-weight: 500;">Congradulation ! Your order is Eligible for free shipping !</div>
+    </div>
+    <div class="col-sm-3">
+    </div>
+  </div>  
+  <div class="row content"><br><br></div>
+
+  <div class="row content">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5">
+      <div style="padding-left: 20px;">Item</div>
+    </div>
+    <div class="col-sm-1">
+        <div >Quantity</div>
+    </div>
+    <div class="col-sm-1" style="margin-left: 30px;">
+        <div >Item Total</div>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+    
+  <div class="row content">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-8" style="margin-top: 20px;">
+        <div class="container" style=" width: auto; border: 1px solid rgb(223, 220, 220); min-height: 300px;">
+            <div *ngFor="let cartItem of cartItems" style="margin-top: 10px;">
+                <div class="col-sm-6" style="width: 500px;height: 100px">
+                    {{cartItem.product.productName}} asdsdas asdasd asdasd asdasd asdasd asd sdadasd asdasd asdasd asdasd asdasd 
+                </div>
+                <div class="col-sm-6" style="width: 150px;height: 100px;">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <a class="btn btn-primary" type="submit">+</a>
+                          </div>
+                        <input type="text" class="form-control" value={{cartItem.productQuantity}} style="font-weight: 500;color: black;">
+                        <div class="input-group-btn">
+                          <a class="btn btn-primary" type="submit">-</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm-6" style="width: 150px;height: 100px;text-align: center;">
+                    $25.578
+                </div>
+            </div>
+    </div>
+    <div class="col-sm-3"></div>   
+  </div>
+</div>

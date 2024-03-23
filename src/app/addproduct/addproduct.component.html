@@ -1,0 +1,117 @@
+<div class="container">
+    <div class="row content">
+      <div class="col-sm-2">
+
+      </div>
+      <div class="col-sm-10">
+        <h2>Logic for adding a product</h2>
+        <!-- <p>Select from the below product category</p>
+         <select #selectedproduct (change)="productSelected(selectedproduct.value)">
+            <option *ngFor="let product of httpProducts" >
+              {{product.productName}}
+            </option>
+         </select> -->
+         <br/>
+         <a data-toggle="modal" data-target="#addProductCategory">add a new product catyegory(modal) popup</a>
+             <!-- Modal -->
+            <div class="modal fade" id="addProductCategory" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header"> 
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add New Product Category</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Enter the New Product Category Details</p>
+                    <input class="form-control" type="text" [(ngModel)] = "toAddProductCategoryName">
+                    {{toAddProductCategoryName}}
+                  </div>
+                  <div class="modal-footer"> 
+                    <button type="button" class="btn btn-default" (click)="addProductCategorySubmitPopup()" data-dismiss="modal">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Modal END -->
+          <!--  <p>Select from the below subcategory</p>
+          <select #selectedsubProduct (change)="subProductSelected(selectedsubProduct.value)">
+            <option *ngFor="let subproduct of httpProducts[selectedProductIndex]['subProduct']">
+              {{ subproduct.subproductName}}
+            </option> 
+          </select>  -->
+          <br>
+          <a data-toggle="modal" data-target="#addSubProduct" >add a new product subcategory catyegory(modal) popuup</a>
+           <!-- Modal -->
+          <div class="modal fade" id="addSubProduct" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header"> 
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Add a New Product SubCategory</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Select from the below product category</p>
+                  <select  [(ngModel)] = "selectedPopUpProductCategoryName" (change)="productCategoryForSubFromPopUp()">
+                    <option *ngFor="let product of httpProducts" >
+                      {{product.productName}} 
+                    </option>
+                  </select> 
+                  <p>Enter the New Sub Product Category Details</p>
+                  <input class="form-control" type="text" [(ngModel)] = "toAddSubProductName">
+                </div>
+                <div class="modal-footer"> 
+                  <button type="button" class="btn btn-default" (click)="addSubProductCategorySubmitPopup()" data-dismiss="modal">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal END -->
+          <!--<p>Add a new Product ?</p> -->
+          <br>
+          <a data-toggle="modal" data-target="#addNewProduct" >add a new product(modal) popup</a>
+           <!-- Modal -->
+          <div class="modal fade" id="addNewProduct" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header"> 
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Add New Product</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Select from the below product category</p>
+                  <select [(ngModel)] = "selectedproduct" (change)="productCategorySelected()" >
+                    <option *ngFor="let product of httpProducts" >
+                      {{product.productName}}
+                    </option>
+                  </select>
+                  <p>Select from the below subcategory</p>
+                  <select [(ngModel)] = "selectedsubProduct" (change)="subProductCategorySelected()">
+                    <option *ngFor="let subproduct of httpProducts[selectedProductIndex]['subProduct']">
+                      {{ subproduct.subproductName}}
+                    </option> 
+                  </select>  
+                  <p>Enter the Product Name</p>
+                  <input class="form-control" type="text" [(ngModel)] = "toAddProductName">
+                  <p>Enter the Product Quantity</p>
+                  <input class="form-control" type="text" [(ngModel)] = "toAddProductQuantity">
+                </div>
+
+                <div class="modal-footer"> 
+                  <button type="button" class="btn btn-default" (click)="addProductSubmitPopup()" data-dismiss="modal">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal END -->
+      </div>
+    </div>
+  </div>
+  
+  <ul>
+    <li *ngFor="let product of httpProducts">
+      {{product.productName}} {{product.productQuantity}}
+    </li>
+  </ul>

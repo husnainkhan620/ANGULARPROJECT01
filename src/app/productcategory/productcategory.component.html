@@ -1,0 +1,72 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="container-fluid text-left">  
+  <div class="row content">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+      <div><h2>{{title}}</h2></div>
+      <div><h5>Product Category Dsscription in legend</h5></div>
+    </div>
+  </div>  
+  <div class="row content">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 text-left">
+      
+      <div class="panel panel-success" >
+        <div class="panel-heading">
+            Filter by Product sub category
+        </div>
+        <div class="panel-body">
+          <div class="row" >
+            <div *ngFor="let productSubCategory of productSubCategoriesByProductCategoryName">
+             
+                <div  class="col-sm-2">
+                  <a  [routerLink]="['/productcategory',productSubCategory.productCategoryName,productSubCategory.productSubCategoryName]" routerLinkActive="active" > <img src="assets/images/nature.jpg" class="img-thumbnail" width="200" height="200"><div class="caption">{{productSubCategory.productSubCategoryName}}</div> </a><div>&nbsp;&nbsp; </div>
+                </div>
+              
+            </div>    
+          </div>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-3"><h3>&nbsp;</h3></div>  <!--pagination for product Category-->
+          </div>
+        
+        </div>
+      </div> 
+    </div>   
+  </div>
+</div>
+
+<div class="col-sm-12 text-left">
+  <!-- <div class="row">
+    <div style=" height: 2px;margin: 9px 0;overflow: hidden;background-color: #e5e5e5;"></div>
+  </div> -->
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-5"><h3>All Product Category Products</h3></div>
+     
+    </div>
+    <div class="row">
+      <div style=" height: 2px;margin: 9px 0;overflow: hidden;background-color: #e5e5e5;"></div>
+    </div>
+    <div class="row">
+                <div class="col-sm-3"><a href="#"><img src="assets/images/lights.jpg" class="img-thumbnail" width="200" height="200"><div class="caption">lights</div></a></div>
+                <div class="col-sm-3"><a href="#"><img src="assets/images/nature.jpg" class="img-thumbnail  img-circle" width="200" height="200"><div class="caption">nature</div> </a></div>
+                <div class="col-sm-3"><a href="#"><img src="assets/images/fjords.jpg" class="img-thumbnail" width="200" height="200"><div class="caption">fjords</div> </a>  </div>
+                <div class="col-sm-3"><a href="#"><img src="assets/images/cinqueterre.jpg" class="img-thumbnail" width="200" height="200"><div class="caption">fjords</div> </a>  </div>
+    </div>
+    <div class="row">
+                <div class="col-sm-3"><a href="#"><img src="assets/images/lights.jpg" class="img-thumbnail" width="200" height="200"><div class="caption">lights</div></a></div>
+                <div class="col-sm-3"><a href="#"><img src="assets/images/nature.jpg" class="img-thumbnail  img-circle" width="200" height="200"><div class="caption">nature</div> </a></div>
+                <div class="col-sm-3"><a href="#"><img src="assets/images/fjords.jpg" class="img-thumbnail" width="200" height="200"><div class="caption">fjords</div> </a>  </div>
+                <div class="col-sm-3"><a href="#"><img src="assets/images/cinqueterre.jpg" class="img-thumbnail" width="200" height="200"><div class="caption">fjords</div> </a>  </div>
+    </div>
+      
+</div>
+
+
+<footer class="container-fluid text-center">
+  <p>Footer text</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</footer>

@@ -1,16 +1,16 @@
-import { Product } from "./product";
+import { ProductHolder } from "./product";
 
-export var PRODUCTS :  Product[]  = [
+export var PRODUCTS :  ProductHolder[]  = [
   { productName:'Embedded Electronics',productQuantity:129,
   subProduct:[
       {subProductQuantity:17,subproductName:'Development'},
       {subProductQuantity:5,subproductName:'Audio Speech'},
       {subProductQuantity:1,subproductName:'Ethernet'},
       {subProductQuantity:6,subproductName:'USB-R232-Serial'},
-      {subProductQuantity:17,subproductName:'Wireless Communications'},
-      {subProductQuantity:5,subproductName:'Lora'},
-      {subProductQuantity:1,subproductName:'Barcode'},
-      {subProductQuantity:6,subproductName:'ESP32 Series'},
+      {subProductQuantity:4,subproductName:'Wireless Communications'},
+      {subProductQuantity:4,subproductName:'Lora'},
+      {subProductQuantity:2,subproductName:'Barcode'},
+      {subProductQuantity:5,subproductName:'ESP32 Series'},
       {subProductQuantity:2,subproductName:'ESP8266 Series'},
       {subProductQuantity:6,subproductName:'Remote Control'},
       {subProductQuantity:4,subproductName:'USB Host'},
